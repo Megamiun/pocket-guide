@@ -26,8 +26,11 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 
-    testImplementation(kotlin("test"))
+    testImplementation("org.hamcrest:hamcrest-core:2.1")
+    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.4.0-M1")
 
+    testImplementation(kotlin("test"))
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 
 tasks.withType<KotlinCompile> {
