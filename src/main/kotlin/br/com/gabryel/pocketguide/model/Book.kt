@@ -6,7 +6,7 @@ import javax.persistence.Entity
 import javax.persistence.Id
 
 @Entity
-class Book(
+data class Book(
     val title: String,
     @JsonAlias("ISBN") val isbn: String,
     val description: String,
