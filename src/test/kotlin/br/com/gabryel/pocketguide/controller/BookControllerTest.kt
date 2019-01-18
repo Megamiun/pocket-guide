@@ -7,6 +7,7 @@ import br.com.gabryel.pocketguide.service.BookService
 import org.hamcrest.CoreMatchers.equalTo
 import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Before
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.beans.factory.annotation.Autowired
@@ -18,12 +19,13 @@ import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilde
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.*
+import java.nio.file.Paths
 
 
 @ExtendWith(SpringExtension::class)
 @SpringBootTest(classes = [Application::class])
 @AutoConfigureMockMvc
-class BookCon1trollerTest {
+class BookControllerTest {
 
     @Autowired
     lateinit var mockMvc: MockMvc
@@ -31,7 +33,7 @@ class BookCon1trollerTest {
     @Autowired
     lateinit var bookRepository: BookRepository
 
-    @Before
+    @BeforeEach
     fun clean() {
         bookRepository.deleteAll()
     }
@@ -109,9 +111,8 @@ class BookCon1trollerTest {
         fileName: String,
         contentType: String
     ): MockHttpServletRequestBuilder {
-        val fileContent = javaClass
-            .getResourceAsStream(fileName).reader()
-            .use { it.readText() }
+        val uri = BookController::class.java.getResource(fileName).toURI()
+        val fileContent = Paths.get(uri).toFile().readText()
 
         return contentType(contentType).content(fileContent)
     }
