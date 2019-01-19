@@ -27,6 +27,8 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 
+    implementation("org.jsoup:jsoup:1.11.3")
+
     testImplementation("org.hamcrest:hamcrest-core:2.1")
     
     testImplementation("org.junit.platform:junit-platform-runner:1.4.0-M1")
