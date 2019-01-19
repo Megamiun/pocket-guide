@@ -7,3 +7,7 @@ This project serves as a simple book database, where an user can insert new book
 ### Gradle
 
 To run this program directly from Gradle, you can use the command `./gradlew bootRun`. Your project will load some books at startup on a memory database, so every time the system is turned off, we lose the previously registered items.
+
+### IDE
+
+To run the project, go the main Application class and run the main method, it will initialize the application.
